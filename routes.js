@@ -1,1 +1,3 @@
-module.exports = function (app) {};
+module.exports = function (app) {
+  app.use("/api/auth", require("./api/auth"));
+};
