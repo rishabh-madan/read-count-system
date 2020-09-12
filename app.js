@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("./utils/logger");
+const path = require("path");
 
 // init app
 const app = express();
@@ -43,8 +44,12 @@ mongoose.connect(
 // register routes
 registerRoutes(app);
 
-app.get("/", (req, res, next) => {
-  res.send("server is running!");
+// serve static folder (admin-panel)
+app.use(express.static("client/build"));
+
+// show admin panel (built react app)
+app.get("/*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
 // error handler
