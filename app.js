@@ -23,6 +23,7 @@ app.use(express.json());
 
 // register db model
 require("./models/User");
+require("./models/Story");
 
 // db connection
 mongoose.connect(
@@ -44,7 +45,7 @@ mongoose.connect(
 // register routes
 registerRoutes(app);
 
-// serve static folder (admin-panel)
+// serve static folder (client)
 app.use(express.static("client/build"));
 
 // show admin panel (built react app)

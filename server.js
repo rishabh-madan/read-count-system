@@ -7,4 +7,8 @@ const port = process.env.PORT || 5000;
 const app = require("./app");
 
 // app set to listen
-app.listen(port, () => console.log(`listening on port ${port}`));
+const server = app.listen(port, () => console.log(`listening on port ${port}`));
+
+module.exports = { server };
+
+require("./read-count-manager");
