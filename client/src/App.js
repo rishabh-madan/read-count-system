@@ -1,19 +1,37 @@
 import React from "react";
-import io from "socket.io-client";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Story from "./pages/Story";
+import { Switch, Route, Redirect } from "react-router-dom";
+import "./App.css";
 
-function App() {
-  var socket = io("http://localhost:5000");
-  var storyId = window.location.pathname.substr(1);
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) => {
+        let token = localStorage.getItem("token");
+        if (token !== null) {
+          return <Component {...props} />;
+        } else {
+          return <Redirect to="/login" />;
+        }
+      }}
+    />
+  );
+};
 
-  socket.on("connect", function () {
-    socket.emit("readerJoined", { storyId: storyId });
-  });
-
-  socket.on("readerCountUpdate", ({ count }) => {
-    console.log(count);
-  });
-
-  return <div className="App">Client App</div>;
+function App(props) {
+  return (
+    <div className="App">
+      <Switch>
+        <ProtectedRoute path="/" component={Dashboard} exact />
+        <Route path="/login" component={Login} />
+        <ProtectedRoute path="/stories/:id" component={Story} />
+        <Route path="*" component={() => <Redirect to="/" />} />
+      </Switch>
+    </div>
+  );
 }
 
 export default App;

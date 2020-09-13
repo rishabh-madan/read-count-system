@@ -5,7 +5,9 @@ const io = require("socket.io")(server);
 const readers = [];
 
 const getReaderCount = (storyId) => {
-  return readers.filter((reader) => reader.storyId == storyId).length;
+  return new Set(
+    readers.filter((reader) => reader.storyId == storyId).map((e) => e.username)
+  ).size;
 };
 
 io.on("connection", (socket) => {
@@ -23,9 +25,14 @@ io.on("connection", (socket) => {
     let user = null;
     const index = readers.findIndex((user) => user.id == socket.id);
 
-    user = readers.splice(index, 1)[0];
-    io.to(user.storyId).emit("readerCountUpdate", {
-      count: getReaderCount(user.storyId),
-    });
+    if (index >= 0) user = readers.splice(index, 1)[0];
+    if (user)
+      io.to(user.storyId).emit("readerCountUpdate", {
+        count: getReaderCount(user.storyId),
+      });
   });
 });
+
+// setInterval(() => {
+//   console.log(readers);
+// }, 2000);

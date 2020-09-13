@@ -63,7 +63,7 @@ module.exports = {
         throw new ErrorHandler(400, "username & password are required");
 
       // get user's password from db
-      let user = await User.findOne({ username }).select("password");
+      let user = await User.findOne({ username }).select("username password");
 
       // if user doesn't exist, throw error
       if (!user) throw new ErrorHandler(404, "user not found");

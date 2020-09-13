@@ -2,9 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("./utils/logger");
 const path = require("path");
+const cors = require("cors");
 
 // init app
 const app = express();
+
+app.use(cors());
 
 const registerRoutes = require("./routes");
 
