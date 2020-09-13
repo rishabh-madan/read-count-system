@@ -8,7 +8,7 @@ import { ExitToApp } from "@material-ui/icons";
 export default class Story extends Component {
   state = {
     storyDetails: {},
-    currentReaderCount: 0,
+    currentReaderCount: 1,
     isLoading: true,
   };
 

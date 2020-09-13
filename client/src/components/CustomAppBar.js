@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 export default function CustomAppBar(props) {
+  const username = localStorage.getItem("username");
   return (
     <AppBar position="static">
       <Toolbar>
@@ -11,6 +12,7 @@ export default function CustomAppBar(props) {
             Read Count System
           </Link>
         </Typography>
+        {username && <Typography>{`Logged in as "${username}"`}</Typography>}
         {props.btn}
       </Toolbar>
     </AppBar>

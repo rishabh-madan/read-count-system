@@ -123,6 +123,12 @@ class Login extends Component {
                 onChange={(e) => {
                   this.setState({ password: e.target.value });
                 }}
+                onKeyDown={(e) => {
+                  if (e.keyCode === 13) {
+                    if (this.state.section == "login") this.handleLogin();
+                    else this.handleSignUp();
+                  }
+                }}
               />
               <Button
                 fullWidth
