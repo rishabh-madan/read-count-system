@@ -35,6 +35,8 @@ npm run dev
 ```
 The client app can now be accessed on port 3000.
 
+Note: The .env file containing ```database URI```, has been added for convenience. Feel free to modify it. The integrated database contains dummy data such as sample stories, and is required for keeping track of total reader count.
+
 ## Application Overview
 
 The Node Application provides REST API for the client app.
