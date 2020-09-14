@@ -94,6 +94,9 @@ class Login extends Component {
             <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
             </Avatar>
+            <Typography>
+              {this.state.section === "login" ? "Login" : "Sign Up"}
+            </Typography>
 
             <form className={classes.form} noValidate>
               <TextField

@@ -3,6 +3,7 @@ const ErrorHandler = require("../utils/errorHandler");
 const Story = mongoose.model("stories");
 
 module.exports = {
+  // returns the list of stories available in database
   async getListOfStories(req, res, next) {
     try {
       let docs = await Story.find().select("title");
@@ -12,6 +13,7 @@ module.exports = {
     }
   },
 
+  // returns the details of story (title, content, totalReaderCount)
   async getStory(req, res, next) {
     const storyId = req.params.id;
     try {

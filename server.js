@@ -11,4 +11,5 @@ const server = app.listen(port, () => console.log(`listening on port ${port}`));
 
 module.exports = { server };
 
+// enable read count manager
 require("./read-count-manager");

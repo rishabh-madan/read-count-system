@@ -24,7 +24,7 @@ app.use(
 // parse application/json
 app.use(express.json());
 
-// register db model
+// register db models
 require("./models/User");
 require("./models/Story");
 
