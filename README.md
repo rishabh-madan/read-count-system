@@ -35,8 +35,11 @@ npm run dev
 The Node Application provides REST API for the client app.
 
 The stories are stored in MongoDB database, which can be fetched using the provided endpoints.
+
 To manage the realtime read counts for each story, Socket.io is configured to capture the live connections, which holds details about the ```user``` and ```storyId```.
+
 As soon as any new reader requests the story, the readers data is updated and a broadcast signal is sent to all the live connections, and the reader count is updated for each client.
+
 The total read count is updated whenever a new user requests for the story (using API endpoint).
 
 Note: Client App is designed and developed with the purpose of demonstration only. Since frontend wasn't a priority for the assignment, State Management and UI Design are just to fulfil bare minimum requirements.
