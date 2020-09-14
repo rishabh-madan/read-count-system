@@ -1,6 +1,6 @@
 # read-count-system (Pratilipi Assignment)
 
-The Web Application demonstrates Real-time Read-Count System, wherein users can view the "current reader count" as well as the "total reader count". In order to access the data, user needs to be authenticated, for which, basic Login/Signup functionality is provided.
+The Web Application demonstrates Real-time Read-Count System, wherein users can view the "current reader count" as well as the "total reader count" for the stories available on the platform. In order to access the data (stories), users need to be authenticated, for which, basic Login/Signup functionality is provided.
 
 ## Live Preview
 https://read-count-system.herokuapp.com/
