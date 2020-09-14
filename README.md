@@ -25,10 +25,15 @@ cd read-count-system
 ```
 npm install
 ```
+4. Install client app dependencies
+```
+npm run client-install
+```
 4. Run
 ```
 npm run dev
 ```
+The client app can now be accessed on port 3000.
 
 ## Application Overview
 
@@ -36,9 +41,13 @@ The Node Application provides REST API for the client app.
 
 The stories are stored in MongoDB database, which can be fetched using the provided endpoints.
 
-To manage the realtime read counts for each story, Socket.io is configured to capture the live connections, which holds details about the ```user``` and ```storyId```.
+To manage the realtime read counts for each story, Socket.io is configured to capture the live connections, which holds details about the ```username``` and ```storyId```.
 
-As soon as any new reader requests the story, the readers data is updated and a broadcast signal is sent to all the live connections, and the reader count is updated for each client.
+Different stories are considered as different rooms for socket connection.
+
+Client(Reader) connects to the socket, when ```Story``` page is viewed, the ```storyId``` is used to establish a connection to the specific ```room```.
+
+As soon as any new reader requests the story, the readers data is updated and a broadcast message is sent to all the live connections(in that room), and the reader count is updated at the client's end.
 
 The total read count is updated whenever a new user requests for the story (using API endpoint).
 
