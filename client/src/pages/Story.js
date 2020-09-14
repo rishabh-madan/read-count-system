@@ -67,6 +67,7 @@ export default class Story extends Component {
               aria-label="menu"
               onClick={() => {
                 localStorage.removeItem("token");
+                localStorage.removeItem("username");
                 this.props.history.push("/");
               }}
             >

@@ -43,6 +43,7 @@ export default class Dashboard extends Component {
               color="inherit"
               onClick={() => {
                 localStorage.removeItem("token");
+                localStorage.removeItem("username");
                 this.props.history.push("/");
               }}
             >
